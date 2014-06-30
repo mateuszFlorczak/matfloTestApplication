@@ -30,11 +30,11 @@
         int people;
     }
     <tbody>
-        @for(int i = 0; i < countryAndLanguages.Countries.Count; ++i)
+        @for (int i = 0; i < countryAndLanguages.Countries.Count; ++i)
         {
-            percentage = (float) Math.Round(countryAndLanguages.CountryLanguages[i].Percentage, 2);
-            people = (int) (countryAndLanguages.Countries[i].Population * (percentage / 100));
-            <tr>
+            percentage = (float)Math.Round(countryAndLanguages.CountryLanguages[i].Percentage, 2);
+            people = (int)(countryAndLanguages.Countries[i].Population * (percentage / 100));
+            <tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
                 <td>@Html.DisplayFor(modelitem => countryAndLanguages.Countries[i].Continent)</td>
                 <td>@Html.DisplayFor(modelitem => countryAndLanguages.Countries[i].Name)</td>
                 <td>@Html.DisplayFor(modelitem => countryAndLanguages.CountryLanguages[i].Language)</td>

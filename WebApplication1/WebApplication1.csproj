@@ -143,7 +143,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Models\CountriesAndLanguages.cs" />
-    <Compile Include="CountryAndLanguageModel.Designer.cs">
+    <Compile Include="Models\CountryAndLanguageModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CountryAndLanguageModel.edml</DependentUpon>
@@ -160,14 +160,14 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\countries.cshtml" />
-    <Content Include="CountryAndLanguageModel.Diagram1.view">
+    <Content Include="Models\CountryAndLanguageModel.Diagram1.view">
       <DependentUpon>CountryAndLanguageModel.edml</DependentUpon>
     </Content>
-    <DevartEntityDeploy Include="CountryAndLanguageModel.edml">
+    <DevartEntityDeploy Include="Models\CountryAndLanguageModel.edml">
       <Generator>DevartEfGenerator</Generator>
       <LastGenOutput>CountryAndLanguageModel.Designer.cs</LastGenOutput>
     </DevartEntityDeploy>
-    <Content Include="CountryAndLanguageModel.edps">
+    <Content Include="Models\CountryAndLanguageModel.edps">
       <DependentUpon>CountryAndLanguageModel.edml</DependentUpon>
     </Content>
     <Content Include="Views\Home\groupedCountries.cshtml" />

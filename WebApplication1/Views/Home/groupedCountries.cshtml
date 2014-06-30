@@ -25,14 +25,14 @@
         }
     }
     <tbody>
-        @foreach(var lang in @Model)
+        @foreach (var lang in @Model)
         {
             percentage = (double)(population / 100);
             percentage = (double)(lang.Population / percentage);
             percentage = Math.Round(percentage, 2);
             //percentage = (float)Math.Round(countryAndLanguages.CountryLanguages[i].Percentage, 2);
             //people = (int)(countryAndLanguages.Countries[i].Population * (percentage / 100));
-            <tr>
+            <tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
                 <td>@Html.DisplayFor(modelitem => lang.LanguageName)</td>
                 <td>@Html.DisplayFor(modelitem => lang.Population)</td>
                 <td>@Html.DisplayFor(modelitem => percentage)</td>
