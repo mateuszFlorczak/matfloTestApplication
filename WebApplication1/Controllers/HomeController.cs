@@ -10,7 +10,7 @@ namespace WebApplication1.Controllers
     public class HomeController : Controller
     {
         private CountryAndLanguageModel.CountryAndLanguageEntities db = new CountryAndLanguageModel.CountryAndLanguageEntities();
-
+        public HomeController() { }
         // GET: Home
         public ActionResult Index()
         {
