@@ -17,7 +17,7 @@
     </thead>
     @{
         var countryAndLanguages = Model;
-        float percentage = 0;
+        double percentage = 0;
         long population = 0;
         foreach (var lang in @Model)
         {
@@ -27,8 +27,9 @@
     <tbody>
         @foreach(var lang in @Model)
         {
-            percentage = lang.Population / population;
-            percentage = (float)Math.Round(percentage, 2);
+            percentage = (double)(population / 100);
+            percentage = (double)(lang.Population / percentage);
+            percentage = Math.Round(percentage, 2);
             //percentage = (float)Math.Round(countryAndLanguages.CountryLanguages[i].Percentage, 2);
             //people = (int)(countryAndLanguages.Countries[i].Population * (percentage / 100));
             <tr>
@@ -40,13 +41,6 @@
     </tbody>
 </table>
 
-@foreach(var lang in @Model)
-{
-    x += lang.Population;
-    y += lang.Population;
-}
 @section footer{
-@Html.DisplayFor(modelitem => x)
-@Html.DisplayFor(modelitem => y)
     footer
 }
