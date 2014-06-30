@@ -16,14 +16,6 @@ namespace WebApplication1.Controllers
         {
             return View();
         }
-        public ActionResult method()
-        {
-            return View(db.Countries.ToList());
-        }
-        public string method2(string countryCode)
-        {
-            return Server.HtmlEncode("hello " + countryCode);
-        }
         public ActionResult countries()
         {
             List<Country> Countries = db.Countries.ToList();

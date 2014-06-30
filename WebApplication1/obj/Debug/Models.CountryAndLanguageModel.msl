@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CountryAndLanguageEntitiesStoreContainer" CdmEntityContainer="CountryAndLanguageEntities">
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="CountryAndLanguageModel.Country">
+        <MappingFragment StoreEntitySet="countries">
+          <ScalarProperty Name="Code" ColumnName="code" />
+          <ScalarProperty Name="Name" ColumnName="name" />
+          <ScalarProperty Name="Continent" ColumnName="continent" />
+          <ScalarProperty Name="Region" ColumnName="region" />
+          <ScalarProperty Name="Surfacearea" ColumnName="surfacearea" />
+          <ScalarProperty Name="Indepyear" ColumnName="indepyear" />
+          <ScalarProperty Name="Population" ColumnName="population" />
+          <ScalarProperty Name="Lifeexpectancy" ColumnName="lifeexpectancy" />
+          <ScalarProperty Name="Gnp" ColumnName="gnp" />
+          <ScalarProperty Name="Gnpold" ColumnName="gnpold" />
+          <ScalarProperty Name="Localname" ColumnName="localname" />
+          <ScalarProperty Name="Governmentform" ColumnName="governmentform" />
+          <ScalarProperty Name="Headofstate" ColumnName="headofstate" />
+          <ScalarProperty Name="Capital" ColumnName="capital" />
+          <ScalarProperty Name="Code2" ColumnName="code2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countrylanguages">
+      <EntityTypeMapping TypeName="CountryAndLanguageModel.Countrylanguage">
+        <MappingFragment StoreEntitySet="countrylanguages">
+          <ScalarProperty Name="Countrycode" ColumnName="countrycode" />
+          <ScalarProperty Name="Language" ColumnName="language" />
+          <ScalarProperty Name="Isofficial" ColumnName="isofficial" />
+          <ScalarProperty Name="Percentage" ColumnName="percentage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

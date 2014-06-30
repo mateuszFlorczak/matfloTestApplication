@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CountryAndLanguageModel" Alias="Self" d4p1:ViewGeneration="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:devart="http://devart.com/schemas/edml/ConceptualSchemaExtensions/1.0" xmlns:ed="http://devart.com/schemas/EntityDeveloper/1.0" annotation:UseStrongSpatialTypes="false" xmlns:d4p1="http://devart.com/schemas/edml/ConceptualSchemaExtensions/1.0" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="CountryAndLanguageEntities" annotation:LazyLoadingEnabled="true" ed:Guid="e7292939-5611-4fd4-8301-62352d2cf390">
+    <EntitySet Name="Countries" EntityType="CountryAndLanguageModel.Country" />
+    <EntitySet Name="Countrylanguages" EntityType="CountryAndLanguageModel.Countrylanguage" />
+    <AssociationSet Name="countrylanguage_countrycode_fkeySet" Association="CountryAndLanguageModel.countrylanguage_countrycode_fkey">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="Countrylanguages" EntitySet="Countrylanguages" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Country" ed:Guid="1d78b8ad-ec23-4f44-9665-771519dcbbcb">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="3" FixedLength="true" ed:ValidateMaxLength="3" ed:ValidateRequired="True" ed:Guid="66afaf3a-3af7-418a-8cc0-aaca0d6d0527" />
+    <Property Name="Name" Type="String" Nullable="false" ed:ValidateRequired="True" ed:Guid="bcc3524b-9e07-4f14-97f5-bb784cd7a8b5" />
+    <Property Name="Continent" Type="String" Nullable="false" ed:ValidateRequired="True" ed:Guid="920ff1c3-14d3-4dea-afa4-d0f55ef2dc34" />
+    <Property Name="Region" Type="String" Nullable="false" ed:ValidateRequired="True" ed:Guid="6b69d772-6ad7-4f55-b21f-55390ab6d6bf" />
+    <Property Name="Surfacearea" Type="Single" Nullable="false" ed:ValidateRequired="True" ed:Guid="072df6fc-1f8a-467a-82d5-3db598ffca87" />
+    <Property Name="Indepyear" Type="Int16" ed:ValidateRequired="False" ed:Guid="d1e3b0cf-d8f0-4ecf-97fd-40aebd15a4fe" />
+    <Property Name="Population" Type="Int32" Nullable="false" ed:ValidateRequired="True" ed:Guid="cc5b39f1-3be7-4992-bc94-731ecab6b1fd" />
+    <Property Name="Lifeexpectancy" Type="Single" ed:ValidateRequired="False" ed:Guid="72784963-1e62-41ba-919b-65d86c406536" />
+    <Property Name="Gnp" Type="Decimal" Precision="10" Scale="2" ed:ValidateRequired="False" ed:Guid="2ca1f230-2f5d-4805-8196-9501119bd31c" />
+    <Property Name="Gnpold" Type="Decimal" Precision="10" Scale="2" ed:ValidateRequired="False" ed:Guid="47be9dea-758e-469a-8fd8-da0ece27a876" />
+    <Property Name="Localname" Type="String" Nullable="false" ed:ValidateRequired="True" ed:Guid="65dda86d-2a2d-466d-9eff-0890ca04743c" />
+    <Property Name="Governmentform" Type="String" Nullable="false" ed:ValidateRequired="True" ed:Guid="687e2d92-ccb8-4598-9da6-6313299310de" />
+    <Property Name="Headofstate" Type="String" ed:ValidateRequired="False" ed:Guid="5621db7c-83b6-431c-9878-a33c94ae0e25" />
+    <Property Name="Capital" Type="Int32" ed:ValidateRequired="False" ed:Guid="742da88b-9edc-4d72-b0d9-80fd66f4b38d" />
+    <Property Name="Code2" Type="String" Nullable="false" MaxLength="2" FixedLength="true" ed:ValidateMaxLength="2" ed:ValidateRequired="True" ed:Guid="3a6bdbe0-e4a4-43c6-8a51-2dcf1c08ed98" />
+    <NavigationProperty Name="Countrylanguages" Relationship="CountryAndLanguageModel.countrylanguage_countrycode_fkey" FromRole="Country" ToRole="Countrylanguages" ed:Guid="9697590e-91e6-460f-8ebf-c7997276954b" />
+  </EntityType>
+  <EntityType Name="Countrylanguage" ed:Guid="b44d46fd-1067-4233-ac17-dcd0a738635f">
+    <Key>
+      <PropertyRef Name="Countrycode" />
+      <PropertyRef Name="Language" />
+    </Key>
+    <Property Name="Countrycode" Type="String" Nullable="false" MaxLength="3" FixedLength="true" ed:ValidateMaxLength="3" ed:ValidateRequired="True" ed:Guid="9ccfd8b0-e318-4af8-b05e-49c781138de8" />
+    <Property Name="Language" Type="String" Nullable="false" ed:ValidateRequired="True" ed:Guid="0962f13d-d521-4d5e-adfc-bbf2dfce29ef" />
+    <Property Name="Isofficial" Type="Boolean" Nullable="false" ed:ValidateRequired="True" ed:Guid="72cc7821-8c32-4cbe-bc71-c2370320dc43" />
+    <Property Name="Percentage" Type="Single" Nullable="false" ed:ValidateRequired="True" ed:Guid="8eca0e44-996e-4192-9e20-cb0c4384604d" />
+    <NavigationProperty Name="Country" Relationship="CountryAndLanguageModel.countrylanguage_countrycode_fkey" FromRole="Countrylanguages" ToRole="Country" ed:Guid="88fd081f-03ad-4520-8e39-e53da7de5476" />
+  </EntityType>
+  <Association Name="countrylanguage_countrycode_fkey" ed:Guid="00940d5e-bd1f-404a-8a61-de947b4e8d56">
+    <End Role="Country" Type="CountryAndLanguageModel.Country" Multiplicity="1" />
+    <End Role="Countrylanguages" Type="CountryAndLanguageModel.Countrylanguage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="Countrylanguages">
+        <PropertyRef Name="Countrycode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
