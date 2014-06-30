@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Countries and Languages</title>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="/Content/main.css">
+</head>
+<body>
+    <div class="all">
+        <div class="header">
+            <h1>@ViewBag.Header</h1>
+        </div>
+        <div class="menu">
+            <a href="/Home">Home</a>
+            <a href="/Home/countries">Countries</a>
+            <a href="/Home/groupedCountries">Languages by Numbers</a>
+        </div>
+        <div class="content">
+            @RenderBody()
+        </div>
+        <div class="footer">
+            @RenderSection("footer")
+        </div>
+    </div>
+</body>
+</html>

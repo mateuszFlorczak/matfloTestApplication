@@ -1,0 +1,52 @@
+﻿@model List<WebApplication1.Models.WorldLanguages>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+    ViewBag.Header = "Global Language use";
+    int x = 0;
+    long y = 0;
+}
+<table>
+    <thead>
+        <tr>
+            <th>Language</th>
+            <th>Population Use</th>
+            <th>Global Population % Use</th>
+        </tr>
+    </thead>
+    @{
+        var countryAndLanguages = Model;
+        float percentage = 0;
+        long population = 0;
+        foreach (var lang in @Model)
+        {
+            population += lang.Population;
+        }
+    }
+    <tbody>
+        @foreach(var lang in @Model)
+        {
+            percentage = lang.Population / population;
+            percentage = (float)Math.Round(percentage, 2);
+            //percentage = (float)Math.Round(countryAndLanguages.CountryLanguages[i].Percentage, 2);
+            //people = (int)(countryAndLanguages.Countries[i].Population * (percentage / 100));
+            <tr>
+                <td>@Html.DisplayFor(modelitem => lang.LanguageName)</td>
+                <td>@Html.DisplayFor(modelitem => lang.Population)</td>
+                <td>@Html.DisplayFor(modelitem => percentage)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@foreach(var lang in @Model)
+{
+    x += lang.Population;
+    y += lang.Population;
+}
+@section footer{
+@Html.DisplayFor(modelitem => x)
+@Html.DisplayFor(modelitem => y)
+    footer
+}
