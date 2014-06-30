@@ -67,6 +67,9 @@ svg {
 
 
 table {
+	margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
 	font-family: verdana,arial,sans-serif;
 	font-size:11px;
 	color:#333333;
