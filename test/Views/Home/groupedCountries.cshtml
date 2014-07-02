@@ -1,0 +1,54 @@
+﻿@model PagedList.IPagedList<test.Models.WorldLanguages>
+@using PagedList.Mvc;
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    ViewBag.Header = "Global Language use";
+}
+<table>
+    <thead>
+        <tr>
+            <th>Language</th>
+            <th>Population Use</th>
+            <th>Global Population % Use</th>
+        </tr>
+    </thead>
+    @{
+        var countryAndLanguages = Model;
+        double percentage = 0;
+        long population = 0;
+        foreach (var lang in @Model)
+        {
+            population += lang.Population;
+        }
+    }
+    <tbody>
+        @foreach (var lang in @Model)
+        {
+            percentage = (double)(population / 100);
+            percentage = (double)(lang.Population / percentage);
+            percentage = Math.Round(percentage, 2);
+            <tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
+                <td>@Html.DisplayFor(modelitem => lang.LanguageName)</td>
+                <td>@Html.DisplayFor(modelitem => lang.Population)</td>
+                <td>@Html.DisplayFor(modelitem => percentage)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+<div>
+    <form action="/Home/groupedCountries" method="post">
+        Elements on page: @*<textarea class="pageItemsCount" onkeypress="return isNumberKey(event)" rows="1">@Model.Page</textarea>*@
+        <input id="PageSize" name="PageSize" type="number" min="1" value="'@(Model.PageSize)'" onkeypress="return isNumberKey(event)" />
+        <input type="submit" value="save" />
+    </form>
+</div>
+Page @(ViewBag.Pages < ViewBag.Page ? 0 : ViewBag.Page) of @ViewBag.Pages
+
+@Html.PagedListPager(Model, page => Url.Action("groupedCountries", new { page, Model.PageSize }))
+
+@section footer{
+    &copy; Made by Mateusz Florczak for Kainos
+}
